@@ -21,11 +21,19 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('../images/background.png');
+    background-color: #f5e6d3;
+    background-image: url('../images/background.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     overflow-x: hidden;
+}
+
+/* PNG fallback for browsers that don't support WebP */
+@supports not (background-image: url('data:image/webp;base64,UklGRh4AAABXRUJQVlA4IBIAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=')) {
+    body {
+        background-image: url('../images/background.png');
+    }
 }
 
 /* 카드 래퍼 */
@@ -46,6 +54,7 @@ body {
     aspect-ratio: 4 / 5;
     border-radius: var(--card-radius);
     cursor: pointer;
+    will-change: transform;
 }
 
 .card-img {
@@ -180,6 +189,7 @@ button:active {
     border-radius: 50% 0 50% 50%;
     opacity: 0.7;
     animation: fall var(--duration, 8s) var(--delay, 0s) infinite linear;
+    will-change: transform, opacity;
 }
 
 .petal--white {

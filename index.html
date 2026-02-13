@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="style/index.css">
     <link rel="stylesheet" href="style/flip.css">
     <link rel="stylesheet" href="style/media.css">
-    <script src="script/index.js"></script>
-    <script src="script/music.js"></script>
-    <script src="script/share.js"></script>
+    <script src="script/index.js" defer></script>
+    <script src="script/music.js" defer></script>
+    <script src="script/share.js" defer></script>
 </head>
 
 <body>
@@ -41,14 +41,20 @@
         <div id="postcard" class="rotate-180" onclick="renewMessage()">
             <!-- 앞면 -->
             <div class="face front">
-                <img src="./images/postcard.png" class="card-img" alt="2026 설날 연하장 앞면" />
+                <picture>
+                    <source srcset="./images/postcard.webp" type="image/webp">
+                    <img src="./images/postcard.png" class="card-img" alt="2026 설날 연하장 앞면" />
+                </picture>
                 <div class="msg-overlay">
                     <p class="p-message"></p>
                 </div>
             </div>
             <!-- 뒷면 -->
             <div class="face back">
-                <img src="./images/backcard2.png" class="card-img" alt="2026 설날 연하장 뒷면" />
+                <picture>
+                    <source srcset="./images/backcard2.webp" type="image/webp">
+                    <img src="./images/backcard2.png" class="card-img" alt="2026 설날 연하장 뒷면" />
+                </picture>
             </div>
         </div>
 
@@ -63,7 +69,7 @@
         </div>
     </div>
 
-    <audio loop id="audio-bgm">
+    <audio loop id="audio-bgm" preload="none">
         <source src="./audio/music.mp3" type="audio/mp3">
     </audio>
 </body>
