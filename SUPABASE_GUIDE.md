@@ -63,5 +63,23 @@ const SUPABASE_ANON_KEY = '여기에_anon_key_붙여넣기';
 1. Supabase 대시보드 -> **Database** -> **Replication** 메뉴로 이동합니다.
 2. `supabase_realtime` 설정을 확인하고, `greeting_messages` 테이블의 토글을 켭니다.
 
+## 5. 🚀 배포 전 테스트 데이터 삭제하기
+테스트로 작성한 덕담과 댓글을 배포 전에 깔끔하게 삭제하려면:
+
+1. Supabase 대시보드 -> **SQL Editor** -> **New query**를 엽니다.
+2. 아래 SQL을 붙여넣고 **Run**을 클릭합니다.
+
+```sql
+-- 1) 댓글 전체 삭제 (먼저 실행)
+delete from public.greeting_comments;
+
+-- 2) 덕담 메시지 전체 삭제
+delete from public.greeting_messages;
+```
+
+> ⚠️ **주의**: 위 명령어는 **모든** 덕담과 댓글을 삭제합니다. 실행 전에 꼭 확인하세요!
+
+> 💡 **팁**: `greeting_comments`는 `on delete cascade`로 설정되어 있어서, 사실 메시지만 삭제해도 관련 댓글이 자동 삭제됩니다. 하지만 안전하게 댓글부터 삭제하는 것을 권장합니다.
+
 ---
 이제 **덕담 나누기** 페이지가 정상적으로 작동합니다! 🎉

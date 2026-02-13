@@ -414,10 +414,12 @@ textarea:focus {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    width: 100%;
 }
 
 .message-card {
     width: 220px;
+    min-width: 0;
     min-height: 220px;
     padding: 20px;
     border-radius: 5px;
