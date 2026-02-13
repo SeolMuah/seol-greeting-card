@@ -1,50 +1,103 @@
-/* 반응형 디자인 - 태블릿 및 작은 화면 (최대 768px) */
+/* Fluid 타이포그래피 (기본값) */
+.p-message {
+    font-size: clamp(15px, 4vw, 22px);
+}
+
+.moon-message {
+    font-size: clamp(18px, 5.5vw, 28px);
+}
+
+/* 태블릿 (768px 이하) */
 @media screen and (max-width: 768px) {
     #postcard {
-        width: 350px;
-        height: 350px;
+        width: 80vw;
+        max-width: 380px;
     }
 
     #btn-container {
-        width: 350px;
+        width: 80vw;
+        max-width: 380px;
     }
 
-    .p-message {
-        font-size: 18px;
+    .msg-overlay {
+        width: 75%;
+        padding: 14px 16px;
     }
 
-    .p-name {
+    .moon-text {
+        width: 40%;
+    }
+
+    button {
         font-size: 15px;
-        padding-right: 60px;
-    }
-
-    .back-message {
-        font-size: 22px;
+        padding: 9px 0;
     }
 }
 
-/* 반응형 디자인 - 모바일 (최대 480px) */
+/* 모바일 (480px 이하) */
 @media screen and (max-width: 480px) {
+    body {
+        background-attachment: scroll;
+    }
+
     #postcard {
-        width: 300px;
-        height: 300px;
+        width: 90vw;
+        max-width: 340px;
     }
 
     #btn-container {
-        width: 300px;
+        width: 90vw;
+        max-width: 340px;
     }
 
-    .p-message {
-        font-size: 15px;
+    .msg-overlay {
+        top: 30%;
+        width: 78%;
+        padding: 12px 14px;
     }
 
-    .p-name {
-        font-size: 13px;
-        padding-right: 50px;
+    .moon-text {
+        top: 26%;
+        width: 42%;
     }
 
-    .back-message {
-        font-size: 18px;
+    button {
+        font-size: 14px;
+        padding: 8px 0;
     }
-    
+
+    /* 모바일에서 꽃잎 크기 축소 */
+    .petal {
+        width: 8px;
+        height: 8px;
+    }
+
+    .petal--white {
+        width: 7px;
+        height: 7px;
+    }
+}
+
+/* 작은 모바일 (360px 이하) */
+@media screen and (max-width: 360px) {
+    #postcard {
+        width: 92vw;
+        max-width: 300px;
+    }
+
+    #btn-container {
+        width: 92vw;
+        max-width: 300px;
+    }
+
+    .msg-overlay {
+        top: 28%;
+        width: 80%;
+        padding: 10px 12px;
+    }
+
+    .moon-text {
+        top: 24%;
+        width: 44%;
+    }
 }

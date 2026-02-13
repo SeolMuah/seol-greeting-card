@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>추석 모바일 연하장</title>
+    <title>2026 설날 연하장</title>
+    <meta name="description" content="2026 설날 연하장 - 새해 복 많이 받으세요!">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -15,31 +16,50 @@
     <script src="script/share.js"></script>
 </head>
 <body>
-    <div id="postcard" class="rotate-0" onclick="flipImage()">
-        <img src="./images/postcard.png" class="postcard-background"/>
-        <!-- 앞면 -->
-        <div class="face front">
-            <div id="msg-container">
-                <!-- 메시지 영역 -->
-                <p class="p-message"></p> 
-                <p class="p-name hidden">Muah 올림</p>
+    <!-- 떨어지는 꽃잎 -->
+    <div class="petals-container">
+        <div class="petal" style="--delay: 0s; --duration: 8s; --x-start: 5vw; --x-drift: 3vw;"></div>
+        <div class="petal" style="--delay: 1.2s; --duration: 10s; --x-start: 15vw; --x-drift: -2vw;"></div>
+        <div class="petal" style="--delay: 0.5s; --duration: 7s; --x-start: 25vw; --x-drift: 4vw;"></div>
+        <div class="petal" style="--delay: 2.8s; --duration: 9s; --x-start: 35vw; --x-drift: -3vw;"></div>
+        <div class="petal" style="--delay: 1.8s; --duration: 11s; --x-start: 45vw; --x-drift: 2vw;"></div>
+        <div class="petal" style="--delay: 3.5s; --duration: 8.5s; --x-start: 55vw; --x-drift: -4vw;"></div>
+        <div class="petal" style="--delay: 0.8s; --duration: 9.5s; --x-start: 65vw; --x-drift: 3vw;"></div>
+        <div class="petal" style="--delay: 2.2s; --duration: 7.5s; --x-start: 75vw; --x-drift: -2vw;"></div>
+        <div class="petal" style="--delay: 4s; --duration: 10.5s; --x-start: 85vw; --x-drift: 4vw;"></div>
+        <div class="petal" style="--delay: 1.5s; --duration: 8s; --x-start: 92vw; --x-drift: -3vw;"></div>
+        <div class="petal petal--white" style="--delay: 0.3s; --duration: 12s; --x-start: 10vw; --x-drift: 2vw;"></div>
+        <div class="petal petal--white" style="--delay: 3s; --duration: 9s; --x-start: 30vw; --x-drift: -4vw;"></div>
+        <div class="petal petal--white" style="--delay: 2s; --duration: 11s; --x-start: 50vw; --x-drift: 3vw;"></div>
+        <div class="petal petal--white" style="--delay: 4.5s; --duration: 8s; --x-start: 70vw; --x-drift: -2vw;"></div>
+        <div class="petal petal--white" style="--delay: 1s; --duration: 10s; --x-start: 88vw; --x-drift: 4vw;"></div>
+    </div>
+
+    <div class="card-wrapper">
+        <div id="postcard" class="rotate-0" onclick="flipImage()">
+            <!-- 앞면 -->
+            <div class="face front">
+                <img src="./images/postcard.png" class="card-img" alt="2026 설날 연하장 앞면"/>
+                <div class="msg-overlay">
+                    <p class="p-message"></p>
+                </div>
             </div>
-        </div>
-        <!-- 뒷면 -->
-        <div class="face back">
-            <div class="photo-container">
-                <img src="./images/backcard.png" class="photo"/>
-                <div id="back-msg-container">
-                    <p class="back-message">💖즐거운 한가위🌟</p>
+            <!-- 뒷면 -->
+            <div class="face back">
+                <img src="./images/backcard.png" class="card-img" alt="2026 설날 연하장 뒷면"/>
+                <div class="moon-text">
+                    <p class="moon-message">福 가득한<br>설날 되세요</p>
                 </div>
             </div>
         </div>
+
+        <div id="btn-container">
+            <button class="btn-bgm" onclick="controlBgm()">재생</button>
+            <button onclick="renewMessage()">연하장 보기</button>
+            <button class="btn-share" onclick="shareMessage()">공유</button>
+        </div>
     </div>
-    <div id="btn-container">
-        <button class="btn-bgm" onclick="controlBgm()">재생</button>
-        <button onclick="renewMessage()">연하장 보기</button>
-        <button class="btn-share" onclick="shareMessage()">공유</button>
-    </div>
+
     <audio loop id="audio-bgm">
         <source src="./audio/music.mp3" type="audio/mp3">
     </audio>
