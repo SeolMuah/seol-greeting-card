@@ -42,21 +42,49 @@
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%;
-            /* 16:9 ratio */
-            height: 0;
-            overflow: hidden;
+            display: block;
+            width: 100%;
             border-radius: 12px;
             margin-bottom: 30px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            cursor: pointer;
+            text-decoration: none;
         }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-container img {
             width: 100%;
-            height: 100%;
+            display: block;
+        }
+
+        .video-container .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 48px;
+            background: rgba(255, 0, 0, 0.85);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .video-container:hover .play-btn {
+            background: rgba(255, 0, 0, 1);
+        }
+
+        .play-btn::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 18px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 3px;
         }
 
         .assignment-box {
@@ -116,30 +144,32 @@
 
 <body>
     <div class="container">
-        <h1>🧧 설날 통계 과제 안내 🧧</h1>
+        <h1>🧧 설날 과제 안내 🧧</h1>
 
         <div class="meme-text">
-            <p>설날에 통계 과제라니..?</p>
+            <p>설날에 과제라니..?</p>
             <p>공부 많이 된다~!</p>
             <p>자기 전에 생각 많이 날거야<br>내일 과제 해야된다는 거</p>
             <br>
-            <p>하기 싫으면 안 해도 돼.<br>그런데 너 빼고 다들 다 하고 있을껄?</p>
+            <p>마지막 과제야 이거 다하고 쉬면 돼.</p>
             <p>쉴려고 스파르타 온 건 아니다..?</p>
+            <p>쉬는 건 나중에 많이 쉴거야</p>
+            <p>쉬지 말고 해야지 </p>
+            <br>
             <p>말 안하지만 스트레스 많이 받을거야 아마</p>
-            <p>통계 과제 굿 파트너! 굿 파트너!</p>
-            <p>공부 많이 된다~! 최고다 최고! 내가 다 부럽다</p>
-            <p>이거 다하고 쉬면 돼. 통계 마지막 과제야</p>
+            <p>그렇지만 스트레스가 있어야돼~</p>
+            <p>과제 굿 파트너! 굿 파트너!</p>
+            <p>공부 많이 된다~! 큰 경험이다 큰 경험! 내가 다 부럽다!</p>
+
             <p>어우~ 과제 한 여러분들이랑 이제 대화가 된다 대화가 돼!</p>
         </div>
 
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/woQ-TFhm5zM?si=WwR-HH4tK96hDXcX"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
+        <a class="video-container" href="https://youtube.com/shorts/woQ-TFhm5zM?si=6SjmZDYvat_8oskM" target="_blank">
+            <img src="https://img.youtube.com/vi/woQ-TFhm5zM/hqdefault.jpg" alt="YouTube 영상 썸네일" />
+            <div class="play-btn"></div>
+        </a>
 
-        <div class="assignment-box">
+        <!-- <div class="assignment-box">
             <h2>📅 제출 기한</h2>
             <p><strong>2026년 2월 19일(목) 09:00까지</strong></p>
 
@@ -157,7 +187,7 @@
                 <li>캐글 고객 데이터 분석 종합 과제</li>
                 <li>기술통계, 확률, 추정, 가설검정, A/B 테스트 설계 및 수행을 포함한 전체 분석 프로세스 수행</li>
             </ul>
-        </div>
+        </div> -->
 
         <a href="index.html" class="btn-home">메인으로 돌아가기</a>
     </div>

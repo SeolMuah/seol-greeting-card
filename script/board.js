@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const commentForm = document.getElementById('comment-form');
     let currentMessageId = null;
 
+    // Restore saved nickname from localStorage
+    const savedNickname = localStorage.getItem('board_nickname');
+    if (savedNickname) {
+        document.getElementById('nickname').value = savedNickname;
+    }
+
     // Load Messages
     async function loadMessages() {
         // Clear grid first? No, maybe append or diff? For simplicity, clear and redraw or just initial load.
@@ -46,10 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const rotate = (Math.random() * 6 - 3).toFixed(1);
             card.style.transform = `rotate(${rotate}deg)`;
 
+            const dateStr = new Date(msg.created_at).toLocaleDateString();
+
             card.innerHTML = `
                 <div class="pin">📍</div>
                 <p class="msg-content">${escapeHtml(msg.message)}</p>
-                <p class="msg-author">- ${escapeHtml(msg.nickname)}</p>
+                <div class="msg-footer">
+                    <span class="msg-author">- ${escapeHtml(msg.nickname)}</span>
+                    <span class="msg-date">${dateStr}</span>
+                </div>
             `;
 
             card.addEventListener('click', () => openModal(msg));
@@ -76,8 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (error) {
             alert('메시지 등록 실패: ' + error.message);
         } else {
-            document.getElementById('message-content').value = ''; // Keep nickname
-            loadMessages(); // Reload to show new
+            // Save nickname to localStorage
+            localStorage.setItem('board_nickname', nickname);
+            document.getElementById('message-content').value = '';
+            loadMessages();
         }
         btn.disabled = false;
         btn.innerText = '덕담 남기기 💌';
@@ -87,7 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
     async function openModal(msg) {
         currentMessageId = msg.id;
         document.getElementById('modal-nickname').innerText = msg.nickname;
-        document.getElementById('modal-date').innerText = new Date(msg.created_at).toLocaleDateString();
+
+        // Format date only: YYYY. M. D.
+        const dateObj = new Date(msg.created_at);
+        const dateStr = `${dateObj.getFullYear()}. ${dateObj.getMonth() + 1}. ${dateObj.getDate()}.`;
+
+        document.getElementById('modal-date').innerText = dateStr;
         document.getElementById('modal-message').innerText = msg.message;
 
         // Remove existing color classes and add the message color
@@ -102,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load Comments
     async function loadComments(messageId) {
         const list = document.getElementById('comments-list');
-        list.innerHTML = 'loading...';
+        list.innerHTML = '<p style="text-align:center; color:#666;">댓글을 불러오는 중...</p>';
 
         const { data, error } = await client
             .from('greeting_comments')
@@ -115,11 +133,21 @@ document.addEventListener('DOMContentLoaded', () => {
             data.forEach(comment => {
                 const item = document.createElement('div');
                 item.className = 'comment-item';
-                item.innerHTML = `<strong>${escapeHtml(comment.nickname)}:</strong> ${escapeHtml(comment.content)}`;
+
+                const dateObj = new Date(comment.created_at);
+                const dateStr = `${dateObj.getFullYear()}. ${dateObj.getMonth() + 1}. ${dateObj.getDate()}.`;
+
+                item.innerHTML = `
+                    <div class="comment-header">
+                        <span class="comment-author">${escapeHtml(comment.nickname)}</span>
+                        <span class="comment-date">${dateStr}</span>
+                    </div>
+                    <p class="comment-content">${escapeHtml(comment.content)}</p>
+                `;
                 list.appendChild(item);
             });
         } else {
-            list.innerHTML = '<p class="no-comments">아직 댓글이 없습니다.</p>';
+            list.innerHTML = '<p class="no-comments">아직 댓글이 없습니다. 첫 댓글을 남겨주세요!</p>';
         }
     }
 
@@ -128,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         if (!currentMessageId) return;
 
-        const nickname = document.getElementById('comment-nickname').value;
+        const nickname = localStorage.getItem('board_nickname') || '익명';
         const content = document.getElementById('comment-content').value;
 
         const { error } = await client

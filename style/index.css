@@ -368,14 +368,11 @@ header h1 {
 
 /* 입력 폼 */
 .input-section {
+    /* max-width is handled by .board-content-box (700px) */
     background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin handled by .board-content-box */
 }
 
 .input-group {
@@ -454,13 +451,25 @@ textarea:focus {
     line-height: 1.4;
     margin-top: 15px;
     flex-grow: 1;
+    word-break: break-all;
+}
+
+.msg-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.msg-date {
+    font-size: 0.75rem;
+    color: #888;
 }
 
 .msg-author {
-    text-align: right;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #555;
-    margin-top: 10px;
 }
 
 /* 포스트잇 색상 */
@@ -537,12 +546,21 @@ textarea:focus {
     font-size: 1.3rem;
     margin-bottom: 30px;
     line-height: 1.5;
+    word-break: break-all;
+}
+
+#modal-date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 10px;
 }
 
 .comments-section {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 15px;
-    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.03);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 0 -10px -10px -10px;
+    width: calc(100% + 20px);
 }
 
 .comments-section h3 {
@@ -561,10 +579,37 @@ textarea:focus {
 }
 
 .comment-item {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.comment-date {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.comment-content {
+    color: #333;
+    line-height: 1.4;
 }
 
 #comment-form {
@@ -582,8 +627,12 @@ textarea:focus {
 
 #comment-form button {
     width: auto;
-    padding: 0 15px;
+    padding: 10px 20px;
     font-size: 0.9rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #FF9966, #FF5E62);
+    box-shadow: 0 3px 10px rgba(255, 94, 98, 0.3);
+    white-space: nowrap;
 }
 
 /* =========================================
