@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
     <script src="script/music.js"></script>
     <script src="script/share.js"></script>
 </head>
+
 <body>
     <!-- 떨어지는 꽃잎 -->
     <div class="petals-container">
@@ -39,24 +41,20 @@
         <div id="postcard" class="rotate-0" onclick="flipImage()">
             <!-- 앞면 -->
             <div class="face front">
-                <img src="./images/postcard.png" class="card-img" alt="2026 설날 연하장 앞면"/>
+                <img src="./images/postcard.png" class="card-img" alt="2026 설날 연하장 앞면" />
                 <div class="msg-overlay">
                     <p class="p-message"></p>
                 </div>
             </div>
             <!-- 뒷면 -->
             <div class="face back">
-                <img src="./images/backcard.png" class="card-img" alt="2026 설날 연하장 뒷면"/>
-                <div class="moon-text">
-                    <p class="moon-message">福 가득한<br>설날 되세요</p>
-                </div>
+                <img src="./images/backcard2.png" class="card-img" alt="2026 설날 연하장 뒷면" />
             </div>
         </div>
 
         <div id="btn-container">
             <button class="btn-bgm" onclick="controlBgm()">재생</button>
             <button onclick="renewMessage()">연하장 보기</button>
-            <button class="btn-share" onclick="shareMessage()">공유</button>
         </div>
     </div>
 
@@ -64,4 +62,5 @@
         <source src="./audio/music.mp3" type="audio/mp3">
     </audio>
 </body>
+
 </html>

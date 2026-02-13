@@ -25,7 +25,8 @@
     }
 
     .moon-text {
-        width: 40%;
+        width: 65%;
+        top: 48%;
     }
 
     button {
@@ -57,8 +58,8 @@
     }
 
     .moon-text {
-        top: 26%;
-        width: 42%;
+        top: 48%;
+        width: 65%;
     }
 
     button {
@@ -97,7 +98,7 @@
     }
 
     .moon-text {
-        top: 24%;
-        width: 44%;
+        top: 48%;
+        width: 70%;
     }
 }
