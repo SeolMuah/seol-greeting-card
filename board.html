@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>설날 덕담 게시판</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/index.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="script/config.js"></script>
+    <script src="script/board.js" defer></script>
+</head>
+
+<body>
+    <div class="board-container">
+        <header>
+            <h1>🧧 덕담 나누기 🧧</h1>
+            <p>서로에게 따뜻한 설날 인사를 남겨보세요!</p>
+            <a href="index.html" class="btn-home-small">🏠 메인으로</a>
+        </header>
+
+        <section class="input-section">
+            <form id="message-form">
+                <div class="input-group">
+                    <input type="text" id="nickname" placeholder="닉네임" maxlength="10" required>
+                    <textarea id="message-content" placeholder="덕담을 입력하세요..." maxlength="100" required></textarea>
+                </div>
+                <button type="submit" id="btn-post">덕담 남기기 💌</button>
+            </form>
+        </section>
+
+        <section class="messages-grid" id="messages-grid">
+            <!-- Messages will be loaded here -->
+            <div class="loading">메시지를 불러오는 중...</div>
+        </section>
+    </div>
+
+    <!-- Message Detail Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modal-nickname"></h2>
+                <span id="modal-date"></span>
+            </div>
+            <p id="modal-message" class="modal-message-body"></p>
+
+            <div class="comments-section">
+                <h3>댓글</h3>
+                <div id="comments-list">
+                    <!-- Comments loaded here -->
+                </div>
+                <form id="comment-form">
+                    <input type="text" id="comment-nickname" placeholder="닉네임" required>
+                    <input type="text" id="comment-content" placeholder="댓글 달기..." required>
+                    <button type="submit">등록</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

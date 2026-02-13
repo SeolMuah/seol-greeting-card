@@ -9,6 +9,24 @@
 - **메시지 갱신**: 연하장의 메시지를 갱신하여 다른 메시지를 확인할 수 있습니다.
 - **공유하기**: 연하장을 소셜 미디어 등을 통해 다른 사람들과 공유할 수 있습니다.
 
+## 🧧 New Features (2026 Seollal Update)
+
+### 📢 Homework Guide (`homework.html`)
+- Contains the statistical assignment details and a motivational video.
+
+### 🧧 Greeting Board (`board.html`)
+- A guestbook feature where users can leave messages and comments.
+- **Supabase Setup Required**:
+    1.  Create a Supabase project.
+    2.  Run the SQL script provided in `implementation_plan.md` to create tables.
+    3.  Open `script/config.js` and enter your `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+
+```javascript
+// script/config.js
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+```
+
 ## 파일 구조
 
 - `index.html`: 웹 페이지의 구조와 내용을 정의.
