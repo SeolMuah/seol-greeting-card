@@ -282,10 +282,9 @@ header p {
     transform: translateY(-2px);
 }
 
+
 /* 입력 폼 */
-.input-section {
-    /* padding, margin, width handled by .board-content-box */
-}
+/* .input-section padding, margin, width handled by .board-content-box */
 
 .input-section h2 {
     color: #4a3728;
