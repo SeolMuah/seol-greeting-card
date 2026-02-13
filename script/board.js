@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Supabase 설정이 필요합니다. script/config.js 파일을 확인해주세요.');
         return;
     }
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // Fix: Rename local variable to avoid shadowing global 'supabase' object from CDN
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     const messageForm = document.getElementById('message-form');
     const messagesGrid = document.getElementById('messages-grid');
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadMessages() {
         // Clear grid first? No, maybe append or diff? For simplicity, clear and redraw or just initial load.
         // Let's simple load everything sorted by date desc
-        const { data, error } = await supabase
+        const { data, error } = await client
             .from('greeting_messages')
             .select('*')
             .order('created_at', { ascending: false });
@@ -68,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.disabled = true;
         btn.innerText = '등록 중...';
 
-        const { error } = await supabase
+        const { error } = await client
             .from('greeting_messages')
             .insert([{ nickname, message, color: randomColor }]);
 
@@ -103,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const list = document.getElementById('comments-list');
         list.innerHTML = 'loading...';
 
-        const { data, error } = await supabase
+        const { data, error } = await client
             .from('greeting_comments')
             .select('*')
             .eq('message_id', messageId)
@@ -130,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nickname = document.getElementById('comment-nickname').value;
         const content = document.getElementById('comment-content').value;
 
-        const { error } = await supabase
+        const { error } = await client
             .from('greeting_comments')
             .insert([{ message_id: currentMessageId, nickname, content }]);
 
