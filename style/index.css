@@ -237,10 +237,17 @@ button:active {
     padding: 40px 20px;
 }
 
+
+.board-content-box {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
 header {
     text-align: center;
-    margin-bottom: 50px;
-    padding: 30px;
 }
 
 header h1 {
@@ -277,11 +284,7 @@ header p {
 
 /* 입력 폼 */
 .input-section {
-    padding: 40px;
-    margin-bottom: 60px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    /* padding, margin, width handled by .board-content-box */
 }
 
 .input-section h2 {
